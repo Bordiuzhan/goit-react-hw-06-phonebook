@@ -7,49 +7,49 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 export function App() {
-  const [contacts, setContacts] = useState(() => {
-    const contactsLS = localStorage.getItem('contacts');
-    if (contactsLS !== null) {
-      return JSON.parse(contactsLS);
-    }
-    return [];
-  });
-  const [filter, setFilter] = useState('');
+  // const [contacts, setContacts] = useState(() => {
+  //   const contactsLS = localStorage.getItem('contacts');
+  //   if (contactsLS !== null) {
+  //     return JSON.parse(contactsLS);
+  //   }
+  //   return [];
+  // });
+  // const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const addContact = (name, number) => {
-    for (let contact of contacts) {
-      if (contact.name.toLowerCase() === name.toLowerCase()) {
-        return alert(`${name} is alredy in contacts`);
-      }
-    }
-    setContacts(prevContacts => [
-      ...prevContacts,
-      { id: nanoid(), name, number },
-    ]);
-  };
+  // const addContact = (name, number) => {
+  //   for (let contact of contacts) {
+  //     if (contact.name.toLowerCase() === name.toLowerCase()) {
+  //       return alert(`${name} is alredy in contacts`);
+  //     }
+  //   }
+  //   setContacts(prevContacts => [
+  //     ...prevContacts,
+  //     { id: nanoid(), name, number },
+  //   ]);
+  // };
 
-  const deleteContact = contactId => {
-    setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== contactId)
-    );
-  };
+  // const deleteContact = contactId => {
+  //   setContacts(prevContacts =>
+  //     prevContacts.filter(contact => contact.id !== contactId)
+  //   );
+  // };
 
-  const changeFilter = e => {
-    setFilter(e.currentTarget.value);
-  };
+  // const changeFilter = e => {
+  //   setFilter(e.currentTarget.value);
+  // };
 
-  const getFilteredName = () => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+  // const getFilteredName = () => {
+  //   const normalizedFilter = filter.toLowerCase();
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
 
-  const filteredName = getFilteredName();
+  // const filteredName = getFilteredName();
   return (
     <Layout>
       <h1>Phonebook</h1>
